@@ -22,8 +22,5 @@ public class Enseignant extends Person {
     @OneToMany(mappedBy = "enseignant", fetch = FetchType.EAGER)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Collection<NonDisponibilite> nonDisponibilites = new ArrayList<>();
-    @ToString.Exclude
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "enseignant")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Collection<ElementDeModule> elementDeModules = new ArrayList<>();
+
 }

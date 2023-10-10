@@ -31,9 +31,10 @@ public class ClasseController {
     }
 
     @PostMapping
-    public Classe createClasse(@RequestBody Classe classe) {
-        return classeService.addClasse(classe, 1L);
+    public Classe createClasse(@RequestBody Classe classe, @RequestParam Long filiereId) {
+        return classeService.addClasse(classe, filiereId);
     }
+
 
     @PutMapping("/{id}")
     public Classe updateClasse(@PathVariable Long id, @RequestBody Classe updatedClasse) {

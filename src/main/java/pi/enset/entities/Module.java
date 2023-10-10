@@ -23,9 +23,7 @@ public class Module {
     private String libelle;
     private boolean isSeperated;
     private boolean isMetuale;
-    @OneToMany(mappedBy = "module", fetch = FetchType.EAGER)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Collection<ElementDeModule> elementDeModules = new ArrayList<>();
+
     @ManyToOne
     private Classe classe;
 }
