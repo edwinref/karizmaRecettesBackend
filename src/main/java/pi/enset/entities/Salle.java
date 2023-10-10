@@ -22,7 +22,5 @@ public class Salle {
     private int capacite;
     @Enumerated(EnumType.STRING)
     private TypeSalle typeSalle;
-    @OneToMany(mappedBy = "salle", fetch = FetchType.EAGER)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Collection<ElementDeModule> elementDeModules = new ArrayList<>();
+
 }
