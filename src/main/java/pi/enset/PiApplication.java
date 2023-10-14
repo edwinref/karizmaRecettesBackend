@@ -24,6 +24,7 @@ public class PiApplication {
         SpringApplication.run(PiApplication.class, args);
     }
 
+    /*
     @Bean
     CommandLineRunner lineRunner(UserRepository userRepository,
                                  DepartementRepostitory departementRepostitory,
@@ -244,11 +245,11 @@ public class PiApplication {
             nonDisponibilite4.setJour(DayOfWeek.THURSDAY);
             nonDisponibilite4.setPeriode(Periode.P3);
             nonDisponibilite4.setEnseignant(enseignants2.get(4));
-            nonDisponibiliteRepository.save(nonDisponibilite4);*/
+            nonDisponibiliteRepository.save(nonDisponibilite4);
 
         };
 
     }
-
+            */
 
 }

@@ -12,6 +12,7 @@ public class AuthRespense {
     private Long id;
     private String prenom;
     private boolean isEnseignant;
+    private boolean isEtudiant;
     private boolean isAuthenticated;
 
     public AuthRespense() {
@@ -21,6 +22,7 @@ public class AuthRespense {
         this.nom = "";
         this.prenom = "";
         this.isEnseignant = false;
+        this.isEtudiant = false;
         this.isAuthenticated = false;
     }
 }

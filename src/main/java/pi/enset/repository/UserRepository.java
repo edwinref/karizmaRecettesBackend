@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pi.enset.entities.Enseignant;
+import pi.enset.entities.Etudiant;
 import pi.enset.entities.Person;
 
 import java.util.List;
@@ -28,5 +29,8 @@ public interface UserRepository extends JpaRepository<Person, Long> {
 
     @Query("SELECT u FROM Person u WHERE u.login = ?1 AND u.password = ?2")
     Person findByLoginAndPassword(String login, String password);
+
+    @Query("SELECT u FROM Etudiant u WHERE u.classe.id = ?1")
+    List<Etudiant> searchByClasse(Long id);
 }
 

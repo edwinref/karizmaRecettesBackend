@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import pi.enset.entities.Classe;
 import pi.enset.services.IClasseService;
 
+import java.util.List;
+
 @Slf4j
 @CrossOrigin("*")
 @RestController
@@ -23,6 +25,11 @@ public class ClasseController {
     ) {
         Pageable pageable = PageRequest.of(page, size);
         return classeService.getClasses(pageable);
+    }
+
+    @GetMapping("/all")
+    public List<Classe> getAllclasses(){
+        return classeService.getClasses();
     }
 
     @GetMapping("/{id}")

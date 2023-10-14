@@ -15,12 +15,13 @@ public class IAuthImpl implements IAuth {
     public AuthRespense login(String login, String password) {
         System.out.println("login "+login+" password "+password);
      Person person= userRepository.findByLoginAndPassword(login, password);
-        //System.out.println("person "+person);
+        System.out.println("wwwwwwwwwwwwwwwwwwww"+person.getRole());
+        System.out.println("person ");
         if(person!=null){
             person.setAuthentificated(true);
-            System.out.println("person "+person);
+            System.out.println("wwwwwwwwwwwwwww"+person.getPrenom());
             userRepository.save(person);
-            return new AuthRespense("token",person.getRole().equals("ADMIN"),person.getNom(),person.getId(),person.getPrenom(),person.getRole().equals("PROF"),true);
+            return new AuthRespense("token",person.getRole().equals("ADMIN"),person.getNom(),person.getId(),person.getPrenom(),person.getRole().equals("PROF"),person.getRole().equals("Etudiant"),true);
         }
         return new AuthRespense();
     }

@@ -13,6 +13,7 @@ public interface ClasseRepository extends JpaRepository<Classe, Long> {
     @Query("select e from Classe e where e.filiere.departement.id = ?1")
     List<Classe> getClassesByDepartement(Long departementId);
 
+
     @Query("select e from Classe e where e.id = ?1")
     Classe getClassesByID(Long Id);
     @Query("select e from Classe e where e.semestre.id=?2 and (e.libelle LIKE %?1%  or e.filiere.libelle LIKE %?1% )")
