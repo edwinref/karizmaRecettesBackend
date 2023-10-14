@@ -7,7 +7,7 @@ import java.util.List;
 public interface IModuleService {
     List<Module> getModules();
 
-    Module addModule(Module module);
+    Module addModule(Module module,Long classeId);
 
     String deleteModule(Long id);
 

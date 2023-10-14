@@ -19,13 +19,14 @@ public class Module {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private int volumeHoraire;
+    private int volumeHoraireOnsite;
+    private int volumeHoraireOnRemote;
+    private int nbrTD;
+    private int nbrTP;
+    private int nbrEvaluation;
     private String libelle;
     private boolean isSeperated;
     private boolean isMetuale;
-    @OneToMany(mappedBy = "module", fetch = FetchType.EAGER)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Collection<ElementDeModule> elementDeModules = new ArrayList<>();
     @ManyToOne
     private Classe classe;
 }

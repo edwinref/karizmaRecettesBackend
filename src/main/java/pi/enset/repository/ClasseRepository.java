@@ -5,7 +5,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import pi.enset.entities.Classe;
-import pi.enset.entities.ElementDeModule;
 
 import java.util.List;
 

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import pi.enset.entities.Module;
+import pi.enset.services.IClasseService;
 import pi.enset.services.IModuleService;
 
 import java.util.List;
@@ -15,6 +16,8 @@ import java.util.List;
 @RequestMapping("/api/modules")
 public class ModuleController {
     private final IModuleService moduleService;
+    private final IClasseService iClasseService;
+
 
 
     @GetMapping
@@ -28,13 +31,30 @@ public class ModuleController {
     }
 
     @PostMapping
-    public Module createModule(@RequestBody Module module) {
-        return moduleService.addModule(module);
+    public Module createModule(@RequestBody Module module,@RequestParam Long classeId) {
+        return moduleService.addModule(module,classeId);
     }
 
     @PutMapping("/{id}")
-    public Module updateModule(@PathVariable Long id, @RequestBody Module updatedModule) {
-        return moduleService.updateModule(id, updatedModule);
+    public Module updateModule(@PathVariable Long id, @RequestBody Module updatedModule, @RequestParam Long classeId) {
+        Module existingModule = moduleService.getModuleById(id);
+
+        if (existingModule != null) {
+            existingModule.setVolumeHoraireOnsite(updatedModule.getVolumeHoraireOnsite());
+            existingModule.setVolumeHoraireOnRemote(updatedModule.getVolumeHoraireOnRemote());
+            existingModule.setNbrTD(updatedModule.getNbrTD());
+            existingModule.setNbrTP(updatedModule.getNbrTP());
+            existingModule.setNbrEvaluation(updatedModule.getNbrEvaluation());
+            existingModule.setLibelle(updatedModule.getLibelle());
+            existingModule.setSeperated(updatedModule.isSeperated());
+            existingModule.setMetuale(updatedModule.isMetuale());
+            existingModule.setClasse(iClasseService.getClasseById(classeId));
+
+            return moduleService.updateModule(id,existingModule);
+        } else {
+
+            return null;
+        }
     }
 
     @DeleteMapping("/{id}")

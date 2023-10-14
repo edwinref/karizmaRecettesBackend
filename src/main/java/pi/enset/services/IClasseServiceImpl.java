@@ -48,15 +48,22 @@ public class IClasseServiceImpl implements IClasseService {
     }
 
     @Override
-    public Classe updateClasse(Long id, Classe classe) {
-        classe.setId(id);
-       /* Long filiereId=classe.getFiliere().getId();
-        Filiere filiere= filiereRepository.findById(filiereId).orElseThrow(() -> new RuntimeException("La filiere avec id="+filiereId+" n'existe pas!"));
-        classe.setFiliere(filiere);*/
-        System.out.println("........id filiere updateClasse .......");
-        System.out.println(classe.getFiliere().getId());
-        return classeRepository.save(classe);
+    public Classe updateClasse(Long id, Classe updatedClasse) {
+        // Check if the class with the given ID exists
+        Classe existingClasse = classeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("La classe avec l'ID " + id + " n'existe pas"));
+
+        // Update the fields of the existing class with the data from updatedClasse
+        existingClasse.setLibelle(updatedClasse.getLibelle());
+        existingClasse.setNbrEleves(updatedClasse.getNbrEleves());
+
+        // Ensure that the filiere is correctly set (assuming that filiere is a required field)
+        existingClasse.setFiliere(updatedClasse.getFiliere());
+
+        // Save the updated class entity
+        return classeRepository.save(existingClasse);
     }
+
 
     @Override
     public Page<Classe> getClasses(Pageable pageable) {
