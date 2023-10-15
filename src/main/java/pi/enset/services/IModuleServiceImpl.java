@@ -3,6 +3,7 @@ package pi.enset.services;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import pi.enset.entities.Classe;
+import pi.enset.entities.Enseignant;
 import pi.enset.entities.Module;
 import pi.enset.repository.ClasseRepository;
 import pi.enset.repository.ModuleRepository;
@@ -51,5 +52,10 @@ public class IModuleServiceImpl implements IModuleService {
 
         module.setId(id);
         return moduleRepository.save(module);
+    }
+
+    @Override
+    public List<Module> getModuleByEnseignant(Enseignant enseignant) {
+        return moduleRepository.getModulesByEnseignant(enseignant);
     }
 }

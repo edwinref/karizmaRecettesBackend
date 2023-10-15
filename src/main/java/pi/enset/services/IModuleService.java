@@ -1,5 +1,6 @@
 package pi.enset.services;
 
+import pi.enset.entities.Enseignant;
 import pi.enset.entities.Module;
 
 import java.util.List;
@@ -14,4 +15,6 @@ public interface IModuleService {
     Module getModuleById(Long id);
 
     Module updateModule(Long id, Module module);
+
+    List<Module> getModuleByEnseignant(Enseignant enseignant);
 }

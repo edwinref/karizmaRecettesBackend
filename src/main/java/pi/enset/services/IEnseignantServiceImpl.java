@@ -46,6 +46,11 @@ public class IEnseignantServiceImpl implements IEnseignantService {
         return  userRepository.findUsersByRole("PROF",pageable);
     }
 
+    @Override
+    public List<Enseignant> getEnseignantss() {
+        return userRepository.findAllByRole("PROF");
+    }
+
 
     @Override
     public Page<Enseignant> searchEnseignants(String keyword, Pageable pageable) {

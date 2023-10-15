@@ -29,4 +29,6 @@ public class Module {
     private boolean isMetuale;
     @ManyToOne
     private Classe classe;
+    @ManyToOne
+    private Enseignant enseignant;
 }

@@ -30,6 +30,11 @@ public class EnseignantController {
         return enseignantService.getEnseignants(pageable);
     }
 
+    @GetMapping("all")
+    public List<Enseignant> getAllEnseignantss() {
+        return enseignantService.getEnseignantss();
+    }
+
     @GetMapping("/{id}")
     public Enseignant getEnseignantById(@PathVariable Long id) {
         return enseignantService.getEnseignantById(id);

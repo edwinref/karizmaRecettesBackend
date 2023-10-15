@@ -25,6 +25,11 @@ public class ModuleController {
         return moduleService.getModules();
     }
 
+    @GetMapping("/modullees")
+    public List<Module> getModulesNoTeacher(){
+        return moduleService.getModuleByEnseignant(null);
+    }
+
     @GetMapping("/{id}")
     public Module getModuleById(@PathVariable Long id) {
         return moduleService.getModuleById(id);
