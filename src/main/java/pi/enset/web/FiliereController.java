@@ -59,9 +59,6 @@ public class FiliereController {
         Pageable pageable = PageRequest.of(page, size);
         return filiereService.searchFilieres(keyword, pageable);
     }
-    @GetMapping("/{id}/semesters")
-    public List<Semestre> getSemestersByFiliere(@PathVariable Long id) {
-        return filiereService.getSemestersByFiliere(id);
-    }
+
 
 }
