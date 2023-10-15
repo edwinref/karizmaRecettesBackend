@@ -7,7 +7,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.*;
 import pi.enset.entities.Classe;
+import pi.enset.entities.Filiere;
 import pi.enset.services.IClasseService;
+import pi.enset.services.IFiliereService;
+
+import java.util.List;
 
 @Slf4j
 @CrossOrigin("*")
@@ -16,6 +20,7 @@ import pi.enset.services.IClasseService;
 @AllArgsConstructor
 public class ClasseController {
     private final IClasseService classeService;
+    private final IFiliereService filiereService;
     @GetMapping
     public Page<Classe> getAllClasses(
             @RequestParam(defaultValue = "0") int page,
@@ -23,6 +28,11 @@ public class ClasseController {
     ) {
         Pageable pageable = PageRequest.of(page, size);
         return classeService.getClasses(pageable);
+    }
+
+    @GetMapping("/all")
+    public List<Classe> getAllclasses(){
+        return classeService.getClasses();
     }
 
     @GetMapping("/{id}")
@@ -37,9 +47,27 @@ public class ClasseController {
 
 
     @PutMapping("/{id}")
-    public Classe updateClasse(@PathVariable Long id, @RequestBody Classe updatedClasse) {
-        return classeService.updateClasse(id, updatedClasse);
+    public Classe updateClasse(@PathVariable Long id, @RequestBody Classe updatedClasse, @RequestParam Long filiereId) {
+        Classe existingClasse = classeService.getClasseById(id);
+
+        if (existingClasse != null) {
+            existingClasse.setLibelle(updatedClasse.getLibelle());
+            existingClasse.setNbrEleves(updatedClasse.getNbrEleves());
+            Filiere filiere = filiereService.getFiliereById(filiereId);
+
+            if (filiere != null) {
+                existingClasse.setFiliere(filiere);
+            } else {
+
+                return null;
+            }
+            return classeService.updateClasse(id, existingClasse);
+        } else {
+
+            return null;
+        }
     }
+
 
     @DeleteMapping("/{id}")
     public String deleteClasse(@PathVariable Long id) {

@@ -18,6 +18,8 @@ public interface IEnseignantService {
 
     Page<Enseignant> getEnseignants(Pageable pageable);
 
+    List<Enseignant> getEnseignantss();
+
     Page<Enseignant> searchEnseignants(String keyword, Pageable pageable);
 
     List<Enseignant> getAllEnseignants();
