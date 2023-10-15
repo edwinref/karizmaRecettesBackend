@@ -21,10 +21,6 @@ public class Filiere {
     private Long id;
     private String libelle;
     private int nombreSem;
-    private String chefFiliere; // ?
-    @OneToMany(mappedBy = "filiere")
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    private Collection<Classe> classes = new ArrayList<>();
-    @ManyToOne
-    private Departement departement;
+    private String chefFiliere;
+    private String departement;
 }
