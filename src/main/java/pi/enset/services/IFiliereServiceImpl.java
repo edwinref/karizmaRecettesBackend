@@ -61,15 +61,4 @@ public class IFiliereServiceImpl implements IFiliereService {
         return filiereRepository.searchFilieres(keyword, pageable);
     }
 
-    @Override
-    public List<Semestre> getSemestersByFiliere(Long filiereId) {
-        Filiere filiere = getFiliereById(filiereId);
-        List <Semestre> semestres = new ArrayList<>();
-        filiere.getClasses().forEach(classe -> {
-            semestres.add(classe.getSemestre());
-        });
-
-        return semestres;
-    }
-
 }

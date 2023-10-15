@@ -20,6 +20,5 @@ public interface IFiliereService {
     Filiere updateFiliere(Long id, Filiere filiere);
     Page<Filiere> getFilieres(Pageable pageable);
     Page<Filiere> searchFilieres(String keyword, Pageable pageable);
-    List<Semestre> getSemestersByFiliere(Long filiereId);
 
 }

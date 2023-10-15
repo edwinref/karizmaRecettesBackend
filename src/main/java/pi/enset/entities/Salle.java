@@ -18,6 +18,7 @@ public class Salle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String bloc;
     private int numSalle;
     private int capacite;
     @Enumerated(EnumType.STRING)

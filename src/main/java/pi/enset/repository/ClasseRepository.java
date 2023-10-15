@@ -9,7 +9,7 @@ import pi.enset.entities.Classe;
 import java.util.List;
 
 public interface ClasseRepository extends JpaRepository<Classe, Long> {
-    @Query("select e from Classe e where e.filiere.departement.id = ?1")
+    @Query("select e from Classe e where e.filiere.id = ?1")
     List<Classe> getClassesByDepartement(Long departementId);
 
     @Query("select e from Classe e where e.id = ?1")
