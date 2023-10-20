@@ -24,4 +24,18 @@ public class IEtudiantServiceImpl implements IEtudiantService{
     public List<Etudiant> searchEtudiant(Long idClasse) {
         return userRepository.searchByClasse(idClasse);
     }
+
+
+    @Override
+    public String deleteEtudiant(Long id) {
+        try {
+            userRepository.getById(id);
+            userRepository.deleteById(id);
+            return "L'operation est bien effectuée";
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+
+
 }

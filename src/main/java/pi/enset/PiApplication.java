@@ -43,7 +43,7 @@ public class PiApplication {
             admin.setLogin("admin");
             admin.setCne("555");
             admin.setAdmin_type(TypeAdmin.SUPER_ADMIN);
-            userRepository.save(admin);
+            //userRepository.save(admin);
             /*
             // Create the Departement
             Departement departement1 = new Departement();

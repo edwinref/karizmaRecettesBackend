@@ -9,4 +9,6 @@ public interface IEtudiantService {
     Etudiant addEtudiant(Etudiant etudiant);
 
     List<Etudiant> searchEtudiant(Long idClasse);
+
+    String deleteEtudiant(Long id);
 }
