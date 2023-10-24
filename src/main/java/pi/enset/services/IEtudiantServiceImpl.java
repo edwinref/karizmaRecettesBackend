@@ -2,21 +2,31 @@ package pi.enset.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pi.enset.entities.Classe;
-import pi.enset.entities.Enseignant;
 import pi.enset.entities.Etudiant;
+import pi.enset.repository.ClasseRepository;
 import pi.enset.repository.UserRepository;
 
 import java.util.List;
 
 @Service
-public class IEtudiantServiceImpl implements IEtudiantService{
-
+public class IEtudiantServiceImpl implements IEtudiantService {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+    private final ClasseRepository classeRepository;
+
+    @Autowired
+    public IEtudiantServiceImpl(ClasseRepository classeRepository) {
+        this.classeRepository = classeRepository;
+    }
+
     @Override
-    public Etudiant addEtudiant(Etudiant etudiant) {
+    @Transactional
+    public Etudiant addEtudiant(Etudiant etudiant, Long classeId) {
+        Classe classe = classeRepository.findById(classeId).orElse(null);
+        etudiant.setClasse(classe);
         return userRepository.save(etudiant);
     }
 

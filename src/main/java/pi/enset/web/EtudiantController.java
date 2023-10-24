@@ -19,8 +19,8 @@ public class EtudiantController {
     IEtudiantService iEtudiantService;
 
     @PostMapping
-    public Etudiant createEtudiant(@RequestBody Etudiant etudiant) {
-        return iEtudiantService.addEtudiant(etudiant);
+    public Etudiant createEtudiant(@RequestBody Etudiant etudiant,@RequestParam Long classeId) {
+        return iEtudiantService.addEtudiant(etudiant,classeId);
     }
 
     @GetMapping("/{id}")
