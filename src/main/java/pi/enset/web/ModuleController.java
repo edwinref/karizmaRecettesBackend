@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import pi.enset.entities.Module;
 import pi.enset.services.IClasseService;
+import pi.enset.services.IEnseignantService;
 import pi.enset.services.IModuleService;
 
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ModuleController {
     private final IModuleService moduleService;
     private final IClasseService iClasseService;
+    private final IEnseignantService iEnseignantService;
 
 
 
@@ -28,6 +30,11 @@ public class ModuleController {
     @GetMapping("/modullees")
     public List<Module> getModulesNoTeacher(){
         return moduleService.getModuleByEnseignant(null);
+    }
+
+    @GetMapping("/modullees/{id}")
+    public List<Module> getModulesNoTeacher(@PathVariable Long id){
+        return moduleService.getModuleByEnseignant(iEnseignantService.getEnseignantById(id));
     }
 
     @GetMapping("/{id}")

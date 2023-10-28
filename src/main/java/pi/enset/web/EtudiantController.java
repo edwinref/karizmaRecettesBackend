@@ -29,6 +29,10 @@ public class EtudiantController {
     }
 
 
+    @GetMapping("etud/{id}")
+    public Etudiant getEnseignantById(@PathVariable Long id) {
+        return iEtudiantService.getEtudById(id);
+    }
     @DeleteMapping("/{id}")
     public String deleteEnseignant(@PathVariable Long id) {
         return iEtudiantService.deleteEtudiant(id);

@@ -2,8 +2,6 @@ package pi.enset.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pi.enset.entities.Classe;
-import pi.enset.entities.Enseignant;
 import pi.enset.entities.Etudiant;
 import pi.enset.repository.UserRepository;
 
@@ -35,6 +33,11 @@ public class IEtudiantServiceImpl implements IEtudiantService{
         } catch (Exception e) {
             return e.getMessage();
         }
+    }
+
+    @Override
+    public Etudiant getEtudById(Long id) {
+        return userRepository.getEtudByid(id);
     }
 
 

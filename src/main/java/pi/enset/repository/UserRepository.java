@@ -32,5 +32,8 @@ public interface UserRepository extends JpaRepository<Person, Long> {
 
     @Query("SELECT u FROM Etudiant u WHERE u.classe.id = ?1")
     List<Etudiant> searchByClasse(Long id);
+
+    @Query("SELECT e from Person e where e.id = ?1")
+    Etudiant getEtudByid(Long id);
 }
 
