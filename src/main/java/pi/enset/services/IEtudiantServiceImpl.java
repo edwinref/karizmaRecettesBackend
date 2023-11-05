@@ -5,7 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pi.enset.entities.Classe;
 import pi.enset.entities.Etudiant;
+import pi.enset.entities.Groupe;
 import pi.enset.repository.ClasseRepository;
+import pi.enset.repository.GroupeRepository;
 import pi.enset.repository.UserRepository;
 
 import java.util.List;
@@ -18,15 +20,18 @@ public class IEtudiantServiceImpl implements IEtudiantService {
     private final ClasseRepository classeRepository;
 
     @Autowired
+    private GroupeRepository groupeRepository;
+
+    @Autowired
     public IEtudiantServiceImpl(ClasseRepository classeRepository) {
         this.classeRepository = classeRepository;
     }
 
     @Override
     @Transactional
-    public Etudiant addEtudiant(Etudiant etudiant, Long classeId) {
-        Classe classe = classeRepository.findById(classeId).orElse(null);
-        etudiant.setClasse(classe);
+    public Etudiant addEtudiant(Etudiant etudiant, Long groupeId) {
+        Groupe groupe = groupeRepository.findById(groupeId).orElse(null);
+        etudiant.setGroupe(groupe);
         return userRepository.save(etudiant);
     }
 

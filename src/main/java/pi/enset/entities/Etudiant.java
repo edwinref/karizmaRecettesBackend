@@ -20,4 +20,6 @@ public class Etudiant extends Person{
 
     @ManyToOne
     private Classe classe ;
+    @ManyToOne
+    private Groupe groupe ;
 }
