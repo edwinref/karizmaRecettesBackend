@@ -1,7 +1,7 @@
 package pi.enset.services;
 
-import org.springframework.web.bind.annotation.RequestParam;
-import pi.enset.entities.Classe;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import pi.enset.entities.Enseignant;
 import pi.enset.entities.Etudiant;
 
@@ -16,4 +16,13 @@ public interface IEtudiantService {
     String deleteEtudiant(Long id);
 
     Etudiant getEtudById(Long id);
+    Page<Etudiant> getEtudiants(Pageable pageable);
+
+    List<Etudiant> getEtudiantss();
+
+    Page<Etudiant> searchEtudiants(String keyword, Pageable pageable);
+
+    List<Etudiant> getAllEtudiant();
+
+    List<Etudiant> findEtudiantByNom(String nom);
 }
