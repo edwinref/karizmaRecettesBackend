@@ -1,9 +1,12 @@
 package pi.enset.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pi.enset.entities.Classe;
+import pi.enset.entities.Enseignant;
 import pi.enset.entities.Etudiant;
 import pi.enset.entities.Groupe;
 import pi.enset.repository.ClasseRepository;
@@ -55,6 +58,31 @@ public class IEtudiantServiceImpl implements IEtudiantService {
     @Override
     public Etudiant getEtudById(Long id) {
         return userRepository.getEtudByid(id);
+    }
+
+    @Override
+    public Page<Etudiant> getEtudiants(Pageable pageable) {
+        return  userRepository.findUsersByRoles("Etudiant",pageable);
+    }
+
+    @Override
+    public List<Etudiant> getEtudiantss() {
+        return userRepository.findAllByRoleEtudiant("Etudiant");
+    }
+
+    @Override
+    public Page<Etudiant> searchEtudiants(String keyword, Pageable pageable) {
+        return  userRepository.searchWithPaginationEtudiant(keyword, pageable);
+    }
+
+    @Override
+    public List<Etudiant> getAllEtudiant() {
+        return  userRepository.findAllByRoleEtudiant("Etudiant");
+    }
+
+    @Override
+    public List<Etudiant> findEtudiantByNom(String nom) {
+        return  userRepository.findEnseignantByNomEtudiant(nom);
     }
 
 
