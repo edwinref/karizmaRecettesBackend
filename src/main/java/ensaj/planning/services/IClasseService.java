@@ -1,5 +1,6 @@
 package ensaj.planning.services;
 
+import ensaj.planning.entities.Groupe;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import ensaj.planning.entities.Classe;
@@ -19,4 +20,7 @@ public interface IClasseService {
     Page<Classe> getClasses(Pageable pageable);
     Page<Classe> searchClasses(String keyword, Pageable pageable);
     Page<Classe> searchClasses(String keyword,Long sem, Pageable pageable);
+
+    List<Classe> getClassByFiliere(Long filiereId);
+
 }

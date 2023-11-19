@@ -10,4 +10,6 @@ public interface IGroupeService {
     List<Groupe> getGroupByclasse(Long id);
 
     List<Groupe> getGroupByModule(Long id);
+
+
 }

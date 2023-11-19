@@ -1,5 +1,7 @@
 package ensaj.planning.services;
 
+import ensaj.planning.entities.Groupe;
+import ensaj.planning.entities.Module;
 import ensaj.planning.repository.ClasseRepository;
 import ensaj.planning.repository.FiliereRepository;
 import lombok.AllArgsConstructor;
@@ -9,6 +11,7 @@ import org.springframework.stereotype.Service;
 import ensaj.planning.entities.Classe;
 import ensaj.planning.entities.Filiere;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -74,6 +77,12 @@ public class IClasseServiceImpl implements IClasseService {
     public Page<Classe> searchClasses(String keyword, Long sem,Pageable pageable) {
         return classeRepository.searchClasses(keyword, sem, pageable);
     }
+
+    @Override
+    public List<Classe> getClassByFiliere(Long filiereId) {
+        return classeRepository.getClassByFiliere(filiereId);
+    }
+
     @Override
     public Page<Classe> searchClasses(String keyword,Pageable pageable) {
         return classeRepository.searchClasses(keyword, pageable);
